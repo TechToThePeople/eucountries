@@ -11,6 +11,7 @@
   "license": "check the other sources",
   "devDependencies": {
     "country-flags": "^0.0.2",
+    "d3": "^5.7.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-inject": "^4.3.2",
@@ -21,8 +22,5 @@
   },
   "notnow": {
     "@mdi/svg": "^2.6.95"
-  },
-  "dependencies": {
-    "svg-country-flags": "^1.2.3"
   }
 }

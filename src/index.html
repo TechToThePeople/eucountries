@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="dist/js/d3.min.js" ></script>
+  </head>
+  <body>
+    <h3>List of icone flags</h3>
+  <div id="short"></div>
+    <h3>List of big flags</h3>
+  <div id="display"></div>
+    <script>
+var countries = {
+  "Belgium": "be",
+  "Bulgaria": "bg",
+  "Czech Republic": "cz",
+  "Denmark": "dk",
+  "Germany": "de",
+  "Estonia": "ee",
+  "Ireland": "ie",
+  "Greece": "gr",
+  "Spain": "es",
+  "France": "fr",
+  "Croatia": "hr",
+  "Italy": "it",
+  "Cyprus": "cy",
+  "Latvia": "lv",
+  "Lithuania": "lt",
+  "Luxembourg": "lu",
+  "Hungary": "hu",
+  "Malta": "mt",
+  "Netherlands": "nl",
+  "Austria": "at",
+  "Poland": "pl",
+  "Portugal": "pt",
+  "Romania": "ro",
+  "Slovenia": "si",
+  "Slovakia": "sk",
+  "Finland": "fi",
+  "Sweden": "se",
+  "United Kingdom": "gb"
+};
+
+d3.select("#short").selectAll("svg")
+  .data(d3.entries(countries))
+  .enter()
+  .append("svg")
+  .attr("width", 32)
+  .attr("height", 24)
+  .attr("viewbox",'0 0 32 24')
+  .attr("id",function(d) {return "#lg-" + d.value})
+  .append("use")
+  .attr("href",function (d) { return "#flag-" + d.value})
+  .attr("width", 32)
+  .attr("height", 24)
+  .append("title",function(d) {return d.key});
+
+ 
+var flags=d3.select("#display").selectAll("svg")
+  .data(d3.entries(countries))
+  .enter()
+  .append("svg")
+  .attr("width", 640)
+  .attr("height", 480)
+  .attr("viewbox",'0 0 640 480')
+  .attr("title",function(d) {return d.key})
+  .attr("id",function(d) {return "#lg-" + d.value})
+  .append("use")
+  .attr("href",function (d) { return "#flag-" + d.value});
+
+    </script>
+  <div id="svg-flags">
+    <!-- inject:../svg/eu-flags.svg -->
+    <!-- svg of all flags -->
+    <!-- endinject -->
+  </div>
+  </body>
+</html>
