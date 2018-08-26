@@ -35,45 +35,44 @@ animation-duration: 4s;
   </head>
   <body>
     <h3>List of icon flags</h3>
-  <div id="short"></div>
+  <div id="short">
+<svg class="icon flag-be"><use href="#flag-be"></use><title>Belgium</title></svg>
+<svg class="icon flag-bg"><use href="#flag-bg"></use><title>Bulgaria</title></svg>
+<svg class="icon flag-cz"><use href="#flag-cz"></use><title>Czech Republic</title></svg>
+<svg class="icon flag-dk"><use href="#flag-dk"></use><title>Denmark</title></svg>
+<svg class="icon flag-de"><use href="#flag-de"></use><title>Germany</title></svg>
+<svg class="icon flag-ee"><use href="#flag-ee"></use><title>Estonia</title></svg>
+<svg class="icon flag-ie"><use href="#flag-ie"></use><title>Ireland</title></svg>
+<svg class="icon flag-gr"><use href="#flag-gr"></use><title>Greece</title></svg>
+<svg class="icon flag-es"><use href="#flag-es"></use><title>Spain</title></svg>
+<svg class="icon flag-fr"><use href="#flag-fr"></use><title>France</title></svg>
+<svg class="icon flag-hr"><use href="#flag-hr"></use><title>Croatia</title></svg>
+<svg class="icon flag-it"><use href="#flag-it"></use><title>Italy</title></svg>
+<svg class="icon flag-cy"><use href="#flag-cy"></use><title>Cyprus</title></svg>
+<svg class="icon flag-lv"><use href="#flag-lv"></use><title>Latvia</title></svg>
+<svg class="icon flag-lt"><use href="#flag-lt"></use><title>Lithuania</title></svg>
+<svg class="icon flag-lu"><use href="#flag-lu"></use><title>Luxembourg</title></svg>
+<svg class="icon flag-hu"><use href="#flag-hu"></use><title>Hungary</title></svg>
+<svg class="icon flag-mt"><use href="#flag-mt"></use><title>Malta</title></svg>
+<svg class="icon flag-nl"><use href="#flag-nl"></use><title>Netherlands</title></svg>
+<svg class="icon flag-at"><use href="#flag-at"></use><title>Austria</title></svg>
+<svg class="icon flag-pl"><use href="#flag-pl"></use><title>Poland</title></svg>
+<svg class="icon flag-pt"><use href="#flag-pt"></use><title>Portugal</title></svg>
+<svg class="icon flag-ro"><use href="#flag-ro"></use><title>Romania</title></svg>
+<svg class="icon flag-si"><use href="#flag-si"></use><title>Slovenia</title></svg>
+<svg class="icon flag-sk"><use href="#flag-sk"></use><title>Slovakia</title></svg>
+<svg class="icon flag-fi"><use href="#flag-fi"></use><title>Finland</title></svg>
+<svg class="icon flag-se"><use href="#flag-se"></use><title>Sweden</title></svg>
+<svg class="icon flag-gb"><use href="#flag-gb"></use><title>United Kingdom</title></svg>
+<svg class="icon flag-eu"><use href="#flag-eu"></use><title>Europe</title></svg>
+  </div>
   <h3>and in big <i>(mouse over the icons)</i></h3>
   <div id="display"></div>
     <script>
-var countries = {
-  "Belgium": "be",
-  "Bulgaria": "bg",
-  "Czech Republic": "cz",
-  "Denmark": "dk",
-  "Germany": "de",
-  "Estonia": "ee",
-  "Ireland": "ie",
-  "Greece": "gr",
-  "Spain": "es",
-  "France": "fr",
-  "Croatia": "hr",
-  "Italy": "it",
-  "Cyprus": "cy",
-  "Latvia": "lv",
-  "Lithuania": "lt",
-  "Luxembourg": "lu",
-  "Hungary": "hu",
-  "Malta": "mt",
-  "Netherlands": "nl",
-  "Austria": "at",
-  "Poland": "pl",
-  "Portugal": "pt",
-  "Romania": "ro",
-  "Slovenia": "si",
-  "Slovakia": "sk",
-  "Finland": "fi",
-  "Sweden": "se",
-  "United Kingdom": "gb",
-  "Europe": "eu"
-};
+var countries = { "Belgium": "be", "Bulgaria": "bg", "Czech Republic": "cz", "Denmark": "dk", "Germany": "de", "Estonia": "ee", "Ireland": "ie", "Greece": "gr", "Spain": "es", "France": "fr", "Croatia": "hr", "Italy": "it", "Cyprus": "cy", "Latvia": "lv", "Lithuania": "lt", "Luxembourg": "lu", "Hungary": "hu", "Malta": "mt", "Netherlands": "nl", "Austria": "at", "Poland": "pl", "Portugal": "pt", "Romania": "ro", "Slovenia": "si", "Slovakia": "sk", "Finland": "fi", "Sweden": "se", "United Kingdom": "gb","Europe": "eu"};
 
-generateFlags("#short","icon");
-d3.selectAll(".icon")
-  .on("mouseover", function(d){drawFlag(d.value)})
+generateFlags("#short","icon"); //generated statically too, for demo purpose
+d3.selectAll(".icon").on("mouseover", function(d){drawFlag(d.value)})
 
 function drawFlag (iso) {
   d3.selectAll("#display svg").remove();

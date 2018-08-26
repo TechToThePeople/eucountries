@@ -5,6 +5,7 @@ var path = require('path');
 const rename= require('gulp-rename');
 const inject = require('gulp-inject');
 const replace = require('gulp-replace');
+const zip = require('gulp-zip');
 
 const iso="be,bg,cz,dk,de,ee,ie,el,es,fr,hr,it,cy,lv,lt,lu,hu,mt,nl,at,pl,pt,ro,si,sk,fi,se,gb,eu"; 
 //gb, not uk. ee, not gr
@@ -51,8 +52,27 @@ gulp.task('svg', function () {
                 removeComments: true
             }, {
                 cleanupNumericValues: {
-                    floatPrecision: 2
-                }
+                    floatPrecision: 1
+                }},
+            {
+              convertPathData: {
+                floatPrecision: 2
+              }
+            },
+            {
+              transformsWithOnePath: {
+                floatPrecision: 2
+              }
+            },
+            {
+              convertTransform: {
+                floatPrecision: 2
+              }
+            },
+            {
+              cleanupListOfValues: {
+                floatPrecision: 2
+              }
             },{
                     cleanupIDs: {
                         prefix: prefix + '-',
@@ -65,7 +85,9 @@ gulp.task('svg', function () {
         .pipe(replace('<symbol ','<symbol viewBox="0 0 640 480" '))
         .pipe(replace('</svg>','<symbol id="flag-uk"><use href="#flag-gb"></symbol><symbol id="flag-gr"><use href="#flag-ee"></symbol></svg>'))
         .pipe(rename("eu-flags.svg"))
-        .pipe(gulp.dest('svg'));
+        .pipe(gulp.dest('svg'))
+        .pipe(zip(("eu-flags.svg.zip")))
+        .pipe(gulp.dest('svg'))
 });
 
 gulp.task('default', ['init','copy','svg','html']);

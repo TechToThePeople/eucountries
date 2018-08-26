@@ -9,6 +9,7 @@ devDependencies:
   gulp-sourcemaps: 2.6.4
   gulp-svgmin: 1.2.4
   gulp-svgstore: 6.1.1
+  gulp-zip: 4.2.0
 packages:
   /@gulp-sourcemaps/identity-map/1.0.2:
     dependencies:
@@ -254,6 +255,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-aNdbnj9P8PjdXU4ybaWLK2IF3jc/EoDYbC7AazW6to3TRsfXxscC9UXOB5iDiEQrkyIbWp2SLQda4+QAa7nc3w==
+  /buffer-crc32/0.2.13:
+    dev: true
+    resolution:
+      integrity: sha1-DTM+PwDqxQqhRUq9MO+MKl2ackI=
   /cache-base/1.0.1:
     dependencies:
       collection-visit: 1.0.0
@@ -1054,6 +1059,12 @@ packages:
       node: '>= 0.8.0'
     resolution:
       integrity: sha1-QLcJU30k0dRXZ9takIaJ3+aaxE8=
+  /get-stream/3.0.0:
+    dev: true
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha1-jpQ9E1jcN1VQVOy+LtsFqhdO3hQ=
   /get-value/2.0.6:
     dev: true
     engines:
@@ -1283,6 +1294,18 @@ packages:
       node: '>=0.10'
     resolution:
       integrity: sha1-AFTh50RQLifATBh8PsxQXdVLu08=
+  /gulp-zip/4.2.0:
+    dependencies:
+      get-stream: 3.0.0
+      plugin-error: 0.1.2
+      through2: 2.0.3
+      vinyl: 2.2.0
+      yazl: 2.4.3
+    dev: true
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-I+697f6jf+PncdTrqfuwoauxgnLG1yHRg3vlmvDgmJuEnlEHy4meBktJ/oHgfyg4tp6X25wuZqUOraVeVg97wQ==
   /gulp/3.9.1:
     dependencies:
       archy: 1.0.0
@@ -2669,6 +2692,12 @@ packages:
       node: '>=0.4'
     resolution:
       integrity: sha1-pcbVMr5lbiPbgg77lDofBJmNY68=
+  /yazl/2.4.3:
+    dependencies:
+      buffer-crc32: 0.2.13
+    dev: true
+    resolution:
+      integrity: sha1-7CblzIfVYBud+EMtvdPNLlFzoHE=
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
@@ -2683,3 +2712,4 @@ specifiers:
   gulp-sourcemaps: ^2.6.4
   gulp-svgmin: ^1.2.4
   gulp-svgstore: ^6.1.1
+  gulp-zip: ^4.2.0
