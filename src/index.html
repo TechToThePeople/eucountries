@@ -9,7 +9,7 @@
 
 .animated {
 -webkit-animation-duration: 1s;
-animation-duration: 5s;
+animation-duration: 4s;
 }
 
 @keyframes pulse {
@@ -17,7 +17,7 @@ animation-duration: 5s;
     transform: scale3d(1, 1, 1);
   }
 
-  50% {
+  70% {
     transform: scale3d(0.05, 0.05, 0.05);
   }
 
@@ -67,7 +67,8 @@ var countries = {
   "Slovakia": "sk",
   "Finland": "fi",
   "Sweden": "se",
-  "United Kingdom": "gb"
+  "United Kingdom": "gb",
+  "Europe": "eu"
 };
 
 generateFlags("#short","icon");
@@ -75,7 +76,6 @@ d3.selectAll(".icon")
   .on("mouseover", function(d){drawFlag(d.value)})
 
 function drawFlag (iso) {
-  console.log("iso "+iso);
   d3.selectAll("#display svg").remove();
   d3.select("#display")
     .append("svg")

@@ -6,7 +6,8 @@ const rename= require('gulp-rename');
 const inject = require('gulp-inject');
 const replace = require('gulp-replace');
 
-const iso="be,bg,cz,dk,de,ee,ie,el,es,fr,hr,it,cy,lv,lt,lu,hu,mt,nl,at,pl,pt,ro,si,sk,fi,se,gb"; //gb, not uk
+const iso="be,bg,cz,dk,de,ee,ie,el,es,fr,hr,it,cy,lv,lt,lu,hu,mt,nl,at,pl,pt,ro,si,sk,fi,se,gb,eu"; 
+//gb, not uk. ee, not gr
 
 gulp.task('init', function(){
   return gulp.src(["node_modules/d3/dist/d3.min.js"])
@@ -67,5 +68,5 @@ gulp.task('svg', function () {
         .pipe(gulp.dest('svg'));
 });
 
-gulp.task('default', ['svg','copy','html']);
+gulp.task('default', ['init','copy','svg','html']);
 
