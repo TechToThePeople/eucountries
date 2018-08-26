@@ -3,11 +3,40 @@
   <head>
     <meta charset="utf-8">
     <script src="dist/js/d3.min.js" ></script>
+<style>
+  .icon {width:32px;height:24px;margin:1px}
+  #display svg {width:640px;height:480px;display:block;border:1px solid black;}
+
+.animated {
+-webkit-animation-duration: 1s;
+animation-duration: 5s;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(0.05, 0.05, 0.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulse {
+  animation-name: pulse;
+}
+
+</style>
+
   </head>
   <body>
-    <h3>List of icone flags</h3>
+    <h3>List of icon flags</h3>
   <div id="short"></div>
-    <h3>List of big flags</h3>
+  <h3>and in big <i>(mouse over the icons)</i></h3>
   <div id="display"></div>
     <script>
 var countries = {
@@ -41,34 +70,35 @@ var countries = {
   "United Kingdom": "gb"
 };
 
-d3.select("#short").selectAll("svg")
-  .data(d3.entries(countries))
-  .enter()
-  .append("svg")
-  .attr("width", 32)
-  .attr("height", 24)
-  .attr("viewbox",'0 0 32 24')
-  .attr("id",function(d) {return "#lg-" + d.value})
-  .append("use")
-  .attr("href",function (d) { return "#flag-" + d.value})
-  .attr("width", 32)
-  .attr("height", 24)
-  .append("title",function(d) {return d.key});
+generateFlags("#short","icon");
+d3.selectAll(".icon")
+  .on("mouseover", function(d){drawFlag(d.value)})
 
+function drawFlag (iso) {
+  console.log("iso "+iso);
+  d3.selectAll("#display svg").remove();
+  d3.select("#display")
+    .append("svg")
+    .attr("class","animated pulse")
+    .append("use").attr("href",function (d) { return "#flag-" + iso});
+
+}
+
+function generateFlags(dom,svgclass) {
+  svgclass = svgclass || "";
+  var svg=d3.select(dom).selectAll("svg")
+    .data(d3.entries(countries))
+    .enter()
+    .append("svg")
+    .attr("class",function(d) {return svgclass + " flag-" + d.value});
+
+  svg
+    .append("use").attr("href",function (d) { return "#flag-" + d.value});
+  svg
+    .append("title").text(function(d) {return d.key});
+}
  
-var flags=d3.select("#display").selectAll("svg")
-  .data(d3.entries(countries))
-  .enter()
-  .append("svg")
-  .attr("width", 640)
-  .attr("height", 480)
-  .attr("viewbox",'0 0 640 480')
-  .attr("title",function(d) {return d.key})
-  .attr("id",function(d) {return "#lg-" + d.value})
-  .append("use")
-  .attr("href",function (d) { return "#flag-" + d.value});
-
-    </script>
+</script>
   <div id="svg-flags">
     <!-- inject:../svg/eu-flags.svg -->
     <!-- svg of all flags -->

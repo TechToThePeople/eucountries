@@ -4,8 +4,9 @@ var svgmin = require('gulp-svgmin');
 var path = require('path');
 const rename= require('gulp-rename');
 const inject = require('gulp-inject');
+const replace = require('gulp-replace');
 
-const iso="be,bg,cz,dk,de,ee,ie,el,es,fr,hr,it,cy,lv,lt,lu,hu,mt,nl,at,pl,pt,ro,si,sk,fi,se,uk";
+const iso="be,bg,cz,dk,de,ee,ie,el,es,fr,hr,it,cy,lv,lt,lu,hu,mt,nl,at,pl,pt,ro,si,sk,fi,se,gb"; //gb, not uk
 
 gulp.task('init', function(){
   return gulp.src(["node_modules/d3/dist/d3.min.js"])
@@ -33,10 +34,9 @@ gulp.task('html', function() {
 });
 
 gulp.task('svg', function () {
-  var country="Belgium,Bulgaria,Croatia,Cyprus,Czech Republic,Denmark,Estonia,Finland,France,Germany,Greece,Hungary,Ireland,Italy,Latvia,Lithuania,Luxembourg,Malta,Netherlands,Poland,Portugal,Romania,Slovakia,Slovenia,Spain,Sweden,United Kingdom,Austria";
 
   var files=[];
-  iso.split(",").map((c)=>{ files.push("node_modules/flag-icon-css/flags/4x3/"+c+".svg")});
+  iso.split(",").map((c)=>{ files.push("svg/country/"+c+".svg")});
     return gulp
         .src(files)
         .pipe(rename({prefix: 'flag-'}))
@@ -61,6 +61,8 @@ gulp.task('svg', function () {
             }
         }))
         .pipe(svgstore())
+        .pipe(replace('<symbol ','<symbol viewBox="0 0 640 480" '))
+        .pipe(replace('</svg>','<symbol id="flag-uk"><use href="#flag-gb"></symbol><symbol id="flag-gr"><use href="#flag-ee"></symbol></svg>'))
         .pipe(rename("eu-flags.svg"))
         .pipe(gulp.dest('svg'));
 });
