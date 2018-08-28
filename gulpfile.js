@@ -7,7 +7,7 @@ const inject = require('gulp-inject');
 const replace = require('gulp-replace');
 const zip = require('gulp-zip');
 
-const iso="be,bg,cz,dk,de,ee,ie,el,es,fr,hr,it,cy,lv,lt,lu,hu,mt,nl,at,pl,pt,ro,si,sk,fi,se,gb,eu"; 
+const iso="be,bg,cz,dk,de,ee,ie,gr,es,fr,hr,it,cy,lv,lt,lu,hu,mt,nl,at,pl,pt,ro,si,sk,fi,se,gb,eu"; 
 //gb, not uk. ee, not gr
 
 gulp.task('init', function(){
@@ -83,7 +83,7 @@ gulp.task('svg', function () {
         }))
         .pipe(svgstore())
         .pipe(replace('<symbol ','<symbol viewBox="0 0 640 480" '))
-        .pipe(replace('</svg>','<symbol id="flag-uk"><use href="#flag-gb"></symbol><symbol id="flag-gr"><use href="#flag-ee"></symbol></svg>'))
+        .pipe(replace('</svg>','<symbol id="flag-uk"><use href="#flag-gb" /></symbol><symbol id="flag-el"><use href="#flag-gr" /></symbol></svg>'))
         .pipe(rename("eu-flags.svg"))
         .pipe(gulp.dest('svg'))
         .pipe(zip(("eu-flags.svg.zip")))
